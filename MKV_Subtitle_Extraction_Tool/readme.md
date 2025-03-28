@@ -28,7 +28,7 @@ This script extracts subtitle tracks from `.mkv` video files using `mkvmerge` an
 ## Usage
 Run the script in the directory containing your `.mkv` files:
 ```sh
-python script.py
+python subtitle_export.py
 ```
 
 The script will process all `.mkv` files in the current directory and its subdirectories, extracting subtitle tracks.
