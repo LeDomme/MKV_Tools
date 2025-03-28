@@ -1,53 +1,71 @@
 # Rename and Sorting Tool
 
 ## Overview
-This script renames files inside folders based on their parent directory name and organizes folders into alphabet-based subfolders.
+
+This script organizes folders by moving them into alphabetically categorized directories and renaming specific `.mkv` files. It is particularly useful for structuring media files and cleaning up unnecessary folders and files.
 
 ## Features
-- **Rename Files**: Renames files inside folders by using the parent folder's name (excluding `.py` files).
-- **Sort Folders**: Moves folders into alphabetically labeled directories (`A-Z`), `-` for numeric names, and `Other` for special characters.
-- **Color-Coded Output**: Uses `colorama` for enhanced terminal output.
+
+- Moves folders into categorized directories based on their starting letter.
+- Renames `.mkv` files from the `encode` subdirectory to match the parent folder name.
+- Deletes all non-`.mkv` files and extra subdirectories.
+- Provides a summary of moved, renamed, and skipped folders.
+- Uses `colorama` for color-coded terminal output.
 
 ## Installation
-1. Clone the repository or download the script.
-2. Install dependencies:
+
+1. Clone or download the script.
+2. Install the required dependency:
    ```sh
    pip install -r requirements.txt
    ```
 
 ## Usage
-Run the script in the directory where you want to rename and organize files:
+
+Run the script in the directory where your folders are located:
 
 ```sh
-python script.py
+python rename_titles.py
 ```
 
-The script will:
-1. Rename files inside subdirectories.
-2. Move folders into categorized subfolders.
-3. Display renamed/moved/skipped items with color-coded logs.
+## Dependencies
 
-## Requirements
 - Python 3.x
-- `colorama` package
+- `colorama` (for colored terminal output)
 
-## Example Output
-```sh
-============================== RENAMED FILES ==============================
-Movies/ExampleFile.mkv -> Movies/Movies.mkv
+## Example
 
-============================== MOVED FOLDERS ==============================
-Movies -> M/Movies
+Assume the following directory structure:
 
-============================== SKIPPED FILES ==============================
-SkippedFile.txt
+```
+base_directory/
+    MovieA/
+        encode/
+            MovieA.mkv
+        extra_file.txt
+    FilmB/
+        encode/
+            FilmB.mkv
+```
+
+After running the script, the structure will be:
+
+```
+base_directory/
+    M/
+        MovieA/
+            MovieA.mkv
+    F/
+        FilmB/
+            FilmB.mkv
 ```
 
 ## Notes
-- The script will **skip** renaming files if the new filename already exists.
-- It will **not** move folders that are already sorted (`A-Z`, `-`).
-- The script ensures smooth organization without overwriting existing files.
+
+- Folders named with a single character (A-Z) or "-" are skipped.
+- If an `.mkv` file with the correct name already exists, the script will not overwrite it.
+- All non-`.mkv` files and empty subdirectories are deleted.
 
 ## License
-This project is open-source and available under the MIT License.
 
+This project is licensed under the MIT License.
